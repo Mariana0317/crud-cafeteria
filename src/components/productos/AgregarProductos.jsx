@@ -1,11 +1,70 @@
-import React from 'react';
-import {Form, Button, Col} from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button, Col, Alert } from "react-bootstrap";
+import Swal from 'sweetalert2';
 
 const AgregarProductos = () => {
-    return (
-        <div >
-      <Form className="container w-50 bg-dark my-5" variant="light">
+  const [nombreProducto, setNombreProducto] = useState("");
+  const [precioProducto, setPrecioProducto] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [error, setError] = useState(false); //cuando esta en false no muestra el cartel de error
+
+  const leerCategoria = (e) => {
+    setCategoria(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      nombreProducto.trim() === "" ||
+      precioProducto.trim() === "" ||
+      categoria.trim() === ""
+    ) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    const datosEnviados = {
+      nombreProducto,
+      precioProducto,
+      categoria,
+    };
+    try {
+      const cabecera = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datosEnviados),
+      };
+      const resultado = await fetch(
+        "http://localhost:4000/Cafeteria",
+        cabecera
+      );
+      console.log(resultado);
+      if(resultado.status === 200){
+        Swal.fire(
+            'Se agrego!',
+            'Se agrego el producto!',
+            'success'
+          )
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <div>
+      <Form
+        className="container w-50 bg-dark my-5"
+        variant="light"
+        onSubmit={handleSubmit}
+      >
         <h1 className="text-center my-3 text-light">Datos del Producto</h1>
+        {error ? (
+          <Alert className="text-center bg-warning" variant="danger">
+            Todos los campos son obligatorios!
+          </Alert>
+        ) : null}
 
         <Form.Group as={Col} className="mb-3" controlId="nombreProducto">
           <Form.Control
@@ -13,6 +72,7 @@ const AgregarProductos = () => {
             placeholder="Nombre del Producto"
             className="my-3"
             name="nombre"
+            onChange={(e) => setNombreProducto(e.target.value)}
           />
         </Form.Group>
 
@@ -22,6 +82,7 @@ const AgregarProductos = () => {
             placeholder="Precio"
             className="my-3"
             name="precio"
+            onChange={(e) => setPrecioProducto(e.target.value)}
           />
         </Form.Group>
         <Form.Group className="mb-3 " controlId="categoria">
@@ -34,6 +95,7 @@ const AgregarProductos = () => {
             value="bebidas-frias"
             name="categoria"
             id="bebidas-frias"
+            onChange={leerCategoria}
             inline
           />
 
@@ -44,6 +106,7 @@ const AgregarProductos = () => {
             value="bebidas-calientes"
             name="categoria"
             id="bebidas-calientes"
+            onChange={leerCategoria}
             inline
           />
 
@@ -54,6 +117,7 @@ const AgregarProductos = () => {
             value="dulce"
             name="categoria"
             id="dulce"
+            onChange={leerCategoria}
             inline
           />
 
@@ -64,6 +128,7 @@ const AgregarProductos = () => {
             value="salado"
             name="categoria"
             id="salado"
+            onChange={leerCategoria}
             inline
           />
         </Form.Group>
@@ -73,7 +138,7 @@ const AgregarProductos = () => {
         </Button>
       </Form>
     </div>
-    );
+  );
 };
 
 export default AgregarProductos;

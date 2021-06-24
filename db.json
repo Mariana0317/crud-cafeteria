@@ -1,6 +1,28 @@
 {
-  "Cafeteria":  
-  [
-
-    ]
+  "Cafeteria": [
+    {
+      "nombreProducto": "te",
+      "precioProducto": 100,
+      "categoria": "bebida-caliente",
+      "id": 1
+    },
+    {
+      "nombreProducto": "chocolatada",
+      "precioProducto": "200",
+      "categoria": "bebidas-frias",
+      "id": 2
+    },
+    {
+      "nombreProducto": "chocolatada",
+      "precioProducto": "200",
+      "categoria": "bebidas-frias",
+      "id": 3
+    },
+    {
+      "nombreProducto": "cafe con leche",
+      "precioProducto": "250",
+      "categoria": "bebidas-calientes",
+      "id": 4
+    }
+  ]
 }

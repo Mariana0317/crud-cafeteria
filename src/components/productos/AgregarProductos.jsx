@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, Col, Alert } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import { withRouter } from "react-router";
 
-const AgregarProductos = () => {
+const AgregarProductos = (props) => {
   const [nombreProducto, setNombreProducto] = useState("");
   const [precioProducto, setPrecioProducto] = useState("");
   const [categoria, setCategoria] = useState("");
@@ -48,6 +49,9 @@ const AgregarProductos = () => {
             'success'
           )
       }
+      //despues que agruego un nuevo producto pongo recargar productos en true para que muestre el nuevo producto que se agrego a lista
+      props.actualizaProductos(true);
+      props.history.push("/productos");
     } catch (error) {
       console.log(error);
     }
@@ -141,4 +145,4 @@ const AgregarProductos = () => {
   );
 };
 
-export default AgregarProductos;
+export default withRouter(AgregarProductos);

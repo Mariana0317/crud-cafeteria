@@ -1,11 +1,23 @@
-import React from 'react';
+import React from "react";
+import ListGroup from "react-bootstrap/ListGroup";
+import LineaProductos from "./LineaProductos";
 
-const ListarProductos = () => {
-    return (
-        <div>
-            Listar productos
-        </div>
-    );
+const ListarProductos = (props) => {
+  return (
+    <>
+    <h4 className="text-center my-3">Productos existentes</h4>
+    <ListGroup>
+
+    {
+      props.productosApi.map((productoUnico) => (
+      <LineaProductos key={productoUnico.id} 
+      productoUnico={productoUnico} 
+       />
+    ))
+    }
+  </ListGroup>
+  </>
+  );
 };
 
 export default ListarProductos;

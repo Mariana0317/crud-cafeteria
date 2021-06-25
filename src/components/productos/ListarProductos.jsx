@@ -12,6 +12,7 @@ const ListarProductos = (props) => {
       props.productosApi.map((productoUnico) => (
       <LineaProductos key={productoUnico.id} 
       productoUnico={productoUnico} 
+      actualizaProductos={props.actualizaProductos}
        />
     ))
     }

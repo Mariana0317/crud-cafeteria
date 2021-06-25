@@ -41,7 +41,7 @@ function App() {
           <Index></Index>
         </Route>
         <Route exact path="/productos">
-          <ListarProductos productosApi={productosAPI}></ListarProductos>
+          <ListarProductos productosApi={productosAPI} actualizaProductos={setRecargarProductos}></ListarProductos>
         </Route>
         <Route exact path="/productos/agregar">
           <AgregarProductos actualizaProductos={setRecargarProductos}></AgregarProductos>

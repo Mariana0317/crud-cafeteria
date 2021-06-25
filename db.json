@@ -10,12 +10,6 @@
       "nombreProducto": "chocolatada",
       "precioProducto": "200",
       "categoria": "bebidas-frias",
-      "id": 2
-    },
-    {
-      "nombreProducto": "chocolatada",
-      "precioProducto": "200",
-      "categoria": "bebidas-frias",
       "id": 3
     },
     {
@@ -23,12 +17,6 @@
       "precioProducto": "250",
       "categoria": "bebidas-calientes",
       "id": 4
-    },
-    {
-      "nombreProducto": "cara sucia",
-      "precioProducto": "35",
-      "categoria": "dulce",
-      "id": 5
     },
     {
       "nombreProducto": "te verde",
@@ -43,28 +31,10 @@
       "id": 7
     },
     {
-      "nombreProducto": "mate cocido",
-      "precioProducto": "90",
-      "categoria": "bebidas-calientes",
-      "id": 8
-    },
-    {
       "nombreProducto": "medialunas saladas",
       "precioProducto": "40",
       "categoria": "salado",
       "id": 9
-    },
-    {
-      "nombreProducto": "medialunas saladas",
-      "precioProducto": "40",
-      "categoria": "salado",
-      "id": 10
-    },
-    {
-      "nombreProducto": "bizcochos con grasa",
-      "precioProducto": "40",
-      "categoria": "salado",
-      "id": 11
     }
   ]
 }

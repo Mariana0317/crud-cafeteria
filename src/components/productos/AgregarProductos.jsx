@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button, Col, Alert } from "react-bootstrap";
+import {Container, Form, Button, Col, Alert } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import { withRouter } from "react-router";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 const AgregarProductos = (props) => {
   const [nombreProducto, setNombreProducto] = useState("");
@@ -57,13 +59,13 @@ const AgregarProductos = (props) => {
     }
   };
   return (
-    <div>
+    <Container>
       <Form
-        className="container w-50 bg-dark my-5"
+        className="container w-50 bg-transparent my-5"
         variant="light"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-center my-3 text-light">Datos del Producto</h1>
+        <h1 className="text-center my-3 text-black bg-white">Datos del Producto</h1>
         {error ? (
           <Alert className="text-center bg-warning" variant="danger">
             Todos los campos son obligatorios!
@@ -89,11 +91,11 @@ const AgregarProductos = (props) => {
             onChange={(e) => setPrecioProducto(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3 " controlId="categoria">
-          <h4 className="text-info">Categoria</h4>
+        <Form.Group className="mb-5 text-light" controlId="categoria">
+          <h4 className="text-dark bg-white my-5 text-center fs-3 w-25">Categoria</h4>
 
           <Form.Check
-            className="mx-3 light"
+            className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Fria"
             value="bebidas-frias"
@@ -104,7 +106,7 @@ const AgregarProductos = (props) => {
           />
 
           <Form.Check
-            className="mx-3"
+            className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Caliente"
             value="bebidas-calientes"
@@ -115,7 +117,7 @@ const AgregarProductos = (props) => {
           />
 
           <Form.Check
-            className="mx-3"
+            className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Dulce"
             value="dulce"
@@ -126,7 +128,7 @@ const AgregarProductos = (props) => {
           />
 
           <Form.Check
-            className="mx-3"
+            className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Salado"
             value="salado"
@@ -137,11 +139,11 @@ const AgregarProductos = (props) => {
           />
         </Form.Group>
 
-        <Button className="my-3" variant="primary" type="submit">
-          Submit
+        <Button className="my-2" variant="dark" type="submit">
+        <FontAwesomeIcon icon={faPaperPlane} />
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 };
 

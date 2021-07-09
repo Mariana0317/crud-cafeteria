@@ -26,7 +26,7 @@
     },
     {
       "nombreProducto": "brownie",
-      "precioProducto": "150",
+      "precioProducto": "180",
       "categoria": "dulce",
       "id": 7
     },
@@ -35,6 +35,18 @@
       "precioProducto": "40",
       "categoria": "salado",
       "id": 9
+    },
+    {
+      "nombreProducto": "jugo de frutas",
+      "precioProducto": "150",
+      "categoria": "bebidas-frias",
+      "id": 10
+    },
+    {
+      "nombreProducto": "donnas",
+      "precioProducto": "90",
+      "categoria": "dulce",
+      "id": 11
     }
   ]
 }

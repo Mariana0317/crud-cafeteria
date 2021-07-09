@@ -1,0 +1,9 @@
+body{
+    background-image: url("./img/coffe.jpg");
+    background-color: #cccccc; 
+    height: auto; 
+    background-position: center; 
+    background-repeat: repeat; 
+    background-size:contain;
+    
+}

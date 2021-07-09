@@ -2,6 +2,9 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const LineaProductos = (props) => {
   const eliminarProducto = (id) => {
@@ -39,23 +42,26 @@ const LineaProductos = (props) => {
   };
   return (
     <ListGroup.Item
-      className="container w-50 d-flex justify-content-around my-3"
+      className="container w-50 d-flex justify-content-between my-2"
       action
       variant="light"
     >
-      <p className="">{props.productoUnico.nombreProducto}</p>
-      <p className="">{props.productoUnico.precioProducto} </p>
-      <p className="">{props.productoUnico.categoria} </p>
+      <p className="text-primary text-capitalize">{props.productoUnico.nombreProducto}</p>
+      <p className="text-primary text-capitalize">{props.productoUnico.precioProducto} </p>
+      <p className="text-primary text-capitalize ">{props.productoUnico.categoria} </p>
       <Button
         variant="outline-danger"
         size="sm"
         onClick={() => eliminarProducto(props.productoUnico.id)}
       >
-        Eliminar
+        <FontAwesomeIcon icon={faTrashAlt} />
       </Button>
-      <Button variant="outline-info" size="sm">
-        Editar
-      </Button>
+      <Link 
+      to={`/productos/editar/${props.productoUnico.id}`} 
+      size="sm" 
+      className="btn btn-outline-info">
+       <FontAwesomeIcon icon={faEdit} />
+      </Link>
     </ListGroup.Item>
   );
 };

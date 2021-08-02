@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {Container, Form, Button, Col, Alert } from "react-bootstrap";
-import Swal from 'sweetalert2';
+import { Container, Form, Button, Col, Alert } from "react-bootstrap";
+import Swal from "sweetalert2";
 import { withRouter } from "react-router";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const AgregarProductos = (props) => {
   const [nombreProducto, setNombreProducto] = useState("");
@@ -40,16 +40,12 @@ const AgregarProductos = (props) => {
         body: JSON.stringify(datosEnviados),
       };
       const resultado = await fetch(
-        "http://localhost:4000/Cafeteria",
+        "http://localhost:4001/api/Cafeteria",
         cabecera
       );
       console.log(resultado);
-      if(resultado.status === 200){
-        Swal.fire(
-            'Se agrego!',
-            'Se agrego el producto!',
-            'success'
-          )
+      if (resultado.status === 200) {
+        Swal.fire("Se agrego!", "Se agrego el producto!", "success");
       }
       //despues que agruego un nuevo producto pongo recargar productos en true para que muestre el nuevo producto que se agrego a lista
       props.actualizaProductos(true);
@@ -65,7 +61,9 @@ const AgregarProductos = (props) => {
         variant="light"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-center my-3 text-black bg-white">Datos del Producto</h1>
+        <h1 className="text-center my-3 text-black bg-white">
+          Datos del Producto
+        </h1>
         {error ? (
           <Alert className="text-center bg-warning" variant="danger">
             Todos los campos son obligatorios!
@@ -92,15 +90,17 @@ const AgregarProductos = (props) => {
           />
         </Form.Group>
         <Form.Group className="mb-5 text-light" controlId="categoria">
-          <h4 className="text-dark bg-white my-5 text-center fs-3 w-25">Categoria</h4>
+          <h4 className="text-dark bg-white my-5 text-center fs-3 w-25">
+            Categoria
+          </h4>
 
           <Form.Check
             className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Fria"
-            value="bebidas-frias"
+            value="bebida-fria"
             name="categoria"
-            id="bebidas-frias"
+            id="bebida-fria"
             onChange={leerCategoria}
             inline
           />
@@ -109,9 +109,9 @@ const AgregarProductos = (props) => {
             className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Caliente"
-            value="bebidas-calientes"
+            value="bebida-caliente"
             name="categoria"
-            id="bebidas-calientes"
+            id="bebida-caliente"
             onChange={leerCategoria}
             inline
           />
@@ -140,7 +140,7 @@ const AgregarProductos = (props) => {
         </Form.Group>
 
         <Button className="my-2" variant="dark" type="submit">
-        <FontAwesomeIcon icon={faPaperPlane} />
+          <FontAwesomeIcon icon={faPaperPlane} />
         </Button>
       </Form>
     </Container>

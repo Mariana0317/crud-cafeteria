@@ -9,7 +9,6 @@ import Index from "./components/principal/Index";
 import Header from "./components/commons/Header";
 import Footer from "./components/commons/Footer";
 
-
 function App() {
   //estados para guardar los datos que traigo de la opi
   const [productosAPI, setProductosAPI] = useState([]);
@@ -25,7 +24,7 @@ function App() {
 
   const consultarAPI = async () => {
     try {
-      const respuesta = await fetch("http://localhost:4000/Cafeteria");
+      const respuesta = await fetch("http://localhost:4001/api/Cafeteria");
       const resultado = await respuesta.json();
       console.log(resultado);
       setProductosAPI(resultado);
@@ -35,13 +34,11 @@ function App() {
   };
 
   return (
-    <Router >
+    <Router>
       <Header></Header>
-      <Switch >
+      <Switch>
         <Route exact path="/">
-          <Index>
-            
-          </Index>
+          <Index></Index>
         </Route>
         <Route exact path="/productos">
           <ListarProductos
@@ -50,7 +47,7 @@ function App() {
           ></ListarProductos>
         </Route>
         <Route exact path="/productos/agregar">
-          <AgregarProductos 
+          <AgregarProductos
             actualizaProductos={setRecargarProductos}
           ></AgregarProductos>
         </Route>
@@ -58,16 +55,22 @@ function App() {
           exact
           path="/productos/editar/:id"
           render={(props) => {
-            const idProducto = parseInt(props.match.params.id);
+            const idProducto = props.match.params.id;
             console.log(idProducto);
-            const productoEncontrado = productosAPI.find((producto) => (producto.id === idProducto))
-            console.log(productoEncontrado)
-            return <EditarProductos productoEncontrado={productoEncontrado} setRecargarProductos={setRecargarProductos}> </EditarProductos>
-            
+            const productoEncontrado = productosAPI.find(
+              (producto) => producto._id === idProducto
+            );
+            console.log(productoEncontrado);
+            return (
+              <EditarProductos
+                productoEncontrado={productoEncontrado}
+                setRecargarProductos={setRecargarProductos}
+              >
+               
+              </EditarProductos>
+            );
           }}
-        >
-         
-        </Route>
+        ></Route>
       </Switch>
       <Footer></Footer>
     </Router>

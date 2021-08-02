@@ -50,7 +50,7 @@ const EditarProductos = (props) => {
     try {
       //enviar el request
       const consulta = await fetch(
-        `http://localhost:4000/Cafeteria/${props.productoEncontrado.id}`,
+        `http://localhost:4001/api/Cafeteria/${props.productoEncontrado._id}`,
         {
           method: "PUT",
           headers: {
@@ -115,13 +115,13 @@ const EditarProductos = (props) => {
             className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Fria"
-            value="bebidas-frias"
+            value="bebida-fria"
             name="categoria"
-            id="bebidas-frias"
+            id="bebida-fria"
             inline
             onChange={leerCategoria}
             defaultChecked={
-              props.productoEncontrado.categoria === "bebidas-frias"
+              props.productoEncontrado.categoria === "bebida-fria"
             }
           />
 
@@ -129,12 +129,12 @@ const EditarProductos = (props) => {
             className="mx-3 text-dark bg-white border fs-5"
             type="radio"
             label="Bebida Caliente"
-            value="bebidas-calientes"
+            value="bebida-caliente"
             name="categoria"
-            id="bebidas-calientes"
+            id="bebida-caliente"
             onChange={leerCategoria}
             defaultChecked={
-              props.productoEncontrado.categoria === "bebidas-calientes"
+              props.productoEncontrado.categoria === "bebida-caliente"
             }
             inline
           />

@@ -3,12 +3,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const LineaProductos = (props) => {
   const eliminarProducto = (id) => {
-    console.log(id);
     Swal.fire({
       title: "Estas seguro de eliminar el producto?",
       text: "esta acción es irreversible!",
@@ -21,7 +20,7 @@ const LineaProductos = (props) => {
       if (result.isConfirmed) {
         try {
           const resultado = await fetch(
-            `http://localhost:4000/Cafeteria/${id}`,
+            `http://localhost:4001/api/Cafeteria/${id}`,
             {
               method: "DELETE",
               headers: {
@@ -31,9 +30,13 @@ const LineaProductos = (props) => {
           );
           console.log(resultado);
           if (resultado.status === 200) {
-            Swal.fire("Eliminado!", "Tu producto ha sido eliminado.", "success");
+            Swal.fire(
+              "Eliminado!",
+              "Tu producto ha sido eliminado.",
+              "success"
+            );
+            props.actualizaProductos(true);
           }
-          props.actualizaProductos(true);
         } catch (error) {
           console.log(error);
         }
@@ -46,21 +49,28 @@ const LineaProductos = (props) => {
       action
       variant="light"
     >
-      <p className="text-primary text-capitalize">{props.productoUnico.nombreProducto}</p>
-      <p className="text-primary text-capitalize">{props.productoUnico.precioProducto} </p>
-      <p className="text-primary text-capitalize ">{props.productoUnico.categoria} </p>
+      <p className="text-primary text-capitalize">
+        {props.productoUnico.nombreProducto}
+      </p>
+      <p className="text-primary text-capitalize">
+        {props.productoUnico.precioProducto}
+      </p>
+      <p className="text-primary text-capitalize ">
+        {props.productoUnico.categoria}
+      </p>
       <Button
         variant="outline-danger"
         size="sm"
-        onClick={() => eliminarProducto(props.productoUnico.id)}
+        onClick={() => eliminarProducto(props.productoUnico._id)}
       >
         <FontAwesomeIcon icon={faTrashAlt} />
       </Button>
-      <Link 
-      to={`/productos/editar/${props.productoUnico.id}`} 
-      size="sm" 
-      className="btn btn-outline-info">
-       <FontAwesomeIcon icon={faEdit} />
+      <Link
+        to={`/productos/editar/${props.productoUnico._id}`}
+        size="sm"
+        className="btn btn-outline-info"
+      >
+        <FontAwesomeIcon icon={faEdit} />
       </Link>
     </ListGroup.Item>
   );

@@ -11,7 +11,8 @@ const ListarProductos = (props) => {
       <ListGroup className="bg-transparent">
         {props.productosApi.map((productoUnico) => (
           <LineaProductos
-            key={productoUnico.id}
+            key={productoUnico._id}
+            id={productoUnico._id}
             productoUnico={productoUnico}
             actualizaProductos={props.actualizaProductos}
           />

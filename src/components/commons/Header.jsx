@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container ml-auto">
         <NavLink exact={true} to="/" className="nav-link">
         <Col xs={2}>
-      <Image src={process.env.PUBLIC_URL + "../better.png"} className="w-50 "/>
+      <Image src={process.env.PUBLIC_URL + "../better.png"} className=" glass"/>
       </Col>
             
           
